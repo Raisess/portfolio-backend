@@ -1,13 +1,15 @@
 const fb = require('firebase');
 const db = fb.database();
 const hash = require('../modules/hash');
-
+// schema
 const projectSchema = require('../schemas/project.schema');
 
+const id = hash();
+
 module.exports = ({ name, description, cover, link, git, color }) => {
-  db.ref('/projects')
+  db.ref(`/projects/${id}`)
     .set(projectSchema(
-      hash(),
+      id,
       name,
       description,
       cover,
