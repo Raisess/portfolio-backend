@@ -8,6 +8,9 @@ const { port } = require('./config');
 const config = require('./firebase/firebase.json');
 firebase.initializeApp(config);
 
+// api routes
+const project = require('./routes/project.route');
+
 // api dependecies use
 app.use(cors());
 app.use(express.json());
@@ -16,5 +19,8 @@ app.use(express.json());
 app.get('/api', (req, res) => res.json({
   log: 'api is on!'
 }));
+
+// project routes
+app.use('/project', project);
 
 app.listen(port, () => console.log('running in port:', port));
