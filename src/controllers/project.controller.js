@@ -1,4 +1,4 @@
-const createProject = require('../models/createProject.model');
+const createProject = require('../models/project/createProject.model');
 
 module.exports = {
   /**

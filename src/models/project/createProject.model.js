@@ -1,8 +1,8 @@
 const fb = require('firebase');
 const db = fb.database();
-const hash = require('../modules/hash');
+const hash = require('../../modules/hash');
 // schema
-const projectSchema = require('../schemas/project.schema');
+const projectSchema = require('../../schemas/project.schema');
 
 const id = hash();
 
