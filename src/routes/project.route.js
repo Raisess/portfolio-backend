@@ -2,6 +2,17 @@ const router = require('express').Router();
 // project controller
 const { create } = require('../controllers/project.controller');
 
+// create project route
+/**
+* @param {
+*  name,
+*  description,
+*  cover,
+*  link,
+*  git,
+*  color
+* }
+*/
 router.post('/create', (req, res) => {
   try {
     if (create(req.body)) {
