@@ -1,4 +1,5 @@
 const createProject = require('../models/project/createProject.model');
+const updateProject = require('../models/project/updateProject.model');
 
 module.exports = {
   /**
@@ -11,5 +12,6 @@ module.exports = {
    *  color
    * }
    */
-  create: data => createProject(data)
+  create: data => createProject(data),
+  update: data => updateProject(data)
 };
