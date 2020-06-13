@@ -13,5 +13,15 @@ module.exports = {
    * }
    */
   create: data => createProject(data),
+  /**
+   * @param {
+    *  name,
+    *  description,
+    *  cover,
+    *  link,
+    *  git,
+    *  color
+    * }
+    */
   update: data => updateProject(data)
 };

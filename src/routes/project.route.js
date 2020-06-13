@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // project controller
-const { create } = require('../controllers/project.controller');
+const { create, update } = require('../controllers/project.controller');
 
 // create project route
 /**
@@ -22,13 +22,44 @@ router.post('/create', (req, res) => {
       });
     } else {
       return res.status(503).json({
-        log: 'project failed, retry request',
+        log: 'project creation failed, retry request',
         success: false
       });
     }
   } catch (error) {
     return res.status(500).json({
       log: 'error in project creation'
+    });
+  }
+});
+
+// update project route
+/**
+* @param {
+*  name,
+*  description,
+*  cover,
+*  link,
+*  git,
+*  color
+* }
+*/
+router.put('/update', (req, res) => {
+  try {
+    if (update(req.body)) {
+      return res.status(201).json({
+        log: 'updated project',
+        success: true
+      });
+    } else {
+      return res.status(503).json({
+        log: 'project update failed, retry request',
+        success: false
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      log: 'error in project update'
     });
   }
 });
