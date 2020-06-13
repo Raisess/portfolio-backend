@@ -18,12 +18,12 @@ router.post('/create', (req, res) => {
     if (create(req.body)) {
       return res.status(201).json({
         log: 'created project',
-        bool: true
+        success: true
       });
     } else {
       return res.status(503).json({
         log: 'project failed, retry request',
-        bool: false
+        success: false
       });
     }
   } catch (error) {
