@@ -4,6 +4,7 @@ const updateProject = require('../models/project/updateProject.model');
 module.exports = {
   /**
    * @param {
+   *  username,
    *  name,
    *  description,
    *  cover,
@@ -23,5 +24,5 @@ module.exports = {
     *  color
     * }
     */
-  update: data => updateProject(id, data)
+  update: (id, username, data) => updateProject(id, username, data)
 };

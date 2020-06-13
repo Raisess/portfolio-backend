@@ -6,10 +6,11 @@ const projectSchema = require('../../schemas/project.schema');
 
 const id = hash();
 
-module.exports = ({ name, description, cover, link, git, color }) => {
-  return db.ref(`/projects/${id}`)
+module.exports = ({ username, name, description, cover, link, git, color }) => {
+  return db.ref(`/projects/${username}/${id}`)
     .set(projectSchema(
       id,
+      username,
       name,
       description,
       cover,

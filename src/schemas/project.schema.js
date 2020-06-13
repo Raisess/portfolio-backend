@@ -1,8 +1,9 @@
-module.exports = (hash, name, description, cover, link, git, color) => {
+module.exports = (hash, username, name, description, cover, link, git, color) => {
   return {
     crated_at: new Date().toDateString(),
     update_at: new Date().toDateString(),
     id: hash,
+    username: username,
     name: name,
     description: description,
     cover: cover,

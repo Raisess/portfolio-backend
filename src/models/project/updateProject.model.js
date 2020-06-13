@@ -1,8 +1,8 @@
 const fb = require('firebase');
 const db = fb.database();
 
-module.exports = (id, { name, description, cover, link, git, color }) => {
-  return db.ref(`/projects/${id}`)
+module.exports = (id, username, { name, description, cover, link, git, color }) => {
+  return db.ref(`/projects/${username}/${id}`)
     .update({
       updated_at: new Date().toDateString(),
       name: name,

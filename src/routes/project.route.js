@@ -5,6 +5,7 @@ const { create, update } = require('../controllers/project.controller');
 // create project route
 /**
  * @param {
+ *  username,
  *  name,
  *  description,
  *  cover,
@@ -45,9 +46,9 @@ router.post('/create', (req, res) => {
  *  color
  * }
  */
-router.put('/update?', (req, res) => {
+router.put('/update/:username?', (req, res) => {
   try {
-    if (update(req.query.id, req.body)) {
+    if (update(req.query.id, req.params.username, req.body)) {
       return res.status(202).json({
         log: 'updated project',
         success: true
