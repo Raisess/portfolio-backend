@@ -44,9 +44,9 @@ router.post('/create', (req, res) => {
 *  color
 * }
 */
-router.put('/update', (req, res) => {
+router.put('/update?', (req, res) => {
   try {
-    if (update(req.body)) {
+    if (update(req.query.id, req.body)) {
       return res.status(202).json({
         log: 'updated project',
         success: true

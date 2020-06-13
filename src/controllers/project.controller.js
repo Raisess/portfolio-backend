@@ -23,5 +23,5 @@ module.exports = {
     *  color
     * }
     */
-  update: data => updateProject(data)
+  update: data => updateProject(id, data)
 };
