@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // project controller
-const { create, update } = require('../controllers/project.controller');
+const { create, update, get, getAll } = require('../controllers/project.controller');
 
 // create project route
 /**
@@ -37,6 +37,7 @@ router.post('/create', (req, res) => {
 // update project route
 /**
  * ! need the project id
+ * ! need the username
  * @param {
  *  name,
  *  description,
@@ -62,6 +63,36 @@ router.put('/update/:username?', (req, res) => {
   } catch (error) {
     return res.status(500).json({
       log: 'error in project update'
+    });
+  }
+});
+
+// get one project
+/**
+ * @param {
+ *  id,
+ *  username
+ * }
+ */
+router.get('/get/:username/:id', (req, res) => {
+  try {
+    get(req.params.id, req.params.username, project => {
+      if (!project) {
+        return res.status(200).json({
+          log: 'project get success',
+          success: true,
+          project: project
+        });
+      }
+
+      return res.status().json({
+        log: 'project get fail',
+        success: false
+      });
+    });
+  } catch (error) {
+    return res.status(500).json({
+      log: 'error on get a project'
     });
   }
 });

@@ -32,11 +32,11 @@ module.exports = {
     *  username
     * }
     */
-  get: (id, username) => get(id, username),
+  get: (id, username, callback) => get(id, username, callback),
   /**
    * @param {
     *  username
     * }
     */
-  getAll: username => getAll(username)
+  getAll: (username, callback) => getAll(username, callback)
 };
