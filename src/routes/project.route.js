@@ -47,12 +47,12 @@ router.post('/create', (req, res) => {
 router.put('/update', (req, res) => {
   try {
     if (update(req.body)) {
-      return res.status(201).json({
+      return res.status(202).json({
         log: 'updated project',
         success: true
       });
     } else {
-      return res.status(503).json({
+      return res.status(406).json({
         log: 'project update failed, retry request',
         success: false
       });
