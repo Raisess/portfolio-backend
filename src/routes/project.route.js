@@ -4,15 +4,15 @@ const { create, update } = require('../controllers/project.controller');
 
 // create project route
 /**
-* @param {
-*  name,
-*  description,
-*  cover,
-*  link,
-*  git,
-*  color
-* }
-*/
+ * @param {
+ *  name,
+ *  description,
+ *  cover,
+ *  link,
+ *  git,
+ *  color
+ * }
+ */
 router.post('/create', (req, res) => {
   try {
     if (create(req.body)) {
@@ -35,15 +35,16 @@ router.post('/create', (req, res) => {
 
 // update project route
 /**
-* @param {
-*  name,
-*  description,
-*  cover,
-*  link,
-*  git,
-*  color
-* }
-*/
+ * ! need the project id
+ * @param {
+ *  name,
+ *  description,
+ *  cover,
+ *  link,
+ *  git,
+ *  color
+ * }
+ */
 router.put('/update?', (req, res) => {
   try {
     if (update(req.query.id, req.body)) {
