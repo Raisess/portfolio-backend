@@ -1,5 +1,6 @@
 const createProject = require('../models/project/createProject.model');
 const updateProject = require('../models/project/updateProject.model');
+const { get, getAll } = require('../models/project/getProject.model');
 
 module.exports = {
   /**
@@ -24,5 +25,18 @@ module.exports = {
     *  color
     * }
     */
-  update: (id, username, data) => updateProject(id, username, data)
+  update: (id, username, data) => updateProject(id, username, data),
+  /**
+   * @param {
+    *  id,
+    *  username
+    * }
+    */
+  get: (id, username) => get(id, username),
+  /**
+   * @param {
+    *  username
+    * }
+    */
+  getAll: username => getAll(username)
 };
