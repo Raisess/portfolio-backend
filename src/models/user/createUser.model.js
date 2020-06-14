@@ -13,6 +13,7 @@ module.exports = ({ email, avatar, username, password }) => {
   return db.ref(`/users/${id}`)
     .set(userSchema(
       id,
+      md5(email + username + passAlt[0]),
       email,
       avatar,
       username,
