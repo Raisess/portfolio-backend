@@ -9,6 +9,7 @@ const config = require('./firebase/firebase.json');
 firebase.initializeApp(config);
 
 // api routes
+const user = require('./routes/user.route');
 const project = require('./routes/project.route');
 
 // api dependecies use
@@ -20,6 +21,8 @@ app.get('/api', (req, res) => res.json({
   log: 'api is on!'
 }));
 
+// user routes
+app.use('/user', user);
 // project routes
 app.use('/project', project);
 
