@@ -38,6 +38,8 @@ router.post('/create?', async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
+
     return res.status(500).json({
       log: 'error in project creation'
     });
@@ -78,6 +80,8 @@ router.put('/update/:username?', async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
+
     return res.status(500).json({
       log: 'error in project update'
     });
@@ -108,6 +112,8 @@ router.get('/get/:username/:id', (req, res) => {
       });
     });
   } catch (error) {
+    console.log(error);
+
     return res.status(500).json({
       log: 'error on get a project'
     });
