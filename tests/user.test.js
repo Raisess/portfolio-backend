@@ -15,7 +15,7 @@ it('create a user :: {} === true', () => {
 });
 
 test('login a user :: {} === data{}', () => {
-  login({
+  return login({
     username: 'teste',
     password: 'teste'
   }, data => expect(data.username)

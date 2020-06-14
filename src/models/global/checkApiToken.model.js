@@ -2,7 +2,7 @@ const fb = require('firebase');
 const db = fb.database();
 
 module.exports = token => {
-  return db.ref('/users')
+  db.ref('/users')
     .once('value')
     .then(data => {
       const users = Object.values(data.val());
