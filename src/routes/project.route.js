@@ -1,4 +1,6 @@
 const router = require('express').Router();
+// global controller
+const { checkApiToken } = require('../controllers/global.controller');
 // project controller
 const { create, update, get, getAll } = require('../controllers/project.controller');
 
@@ -16,14 +18,21 @@ const { create, update, get, getAll } = require('../controllers/project.controll
  */
 router.post('/create?', (req, res) => {
   try {
-    if (create(req.body)) {
-      return res.status(201).json({
-        log: 'created project',
-        success: true
-      });
+    if (checkApiToken(req.query.token)) {
+      if (create(req.body)) {
+        return res.status(201).json({
+          log: 'created project',
+          success: true
+        });
+      } else {
+        return res.status(503).json({
+          log: 'project creation failed, retry request',
+          success: false
+        });
+      }
     } else {
       return res.status(503).json({
-        log: 'project creation failed, retry request',
+        log: 'invalid api token',
         success: false
       });
     }
@@ -49,14 +58,21 @@ router.post('/create?', (req, res) => {
  */
 router.put('/update/:username?', (req, res) => {
   try {
-    if (update(req.query.id, req.params.username, req.body)) {
-      return res.status(202).json({
-        log: 'updated project',
-        success: true
-      });
+    if (checkApiToken(req.query.token)) {
+      if (update(req.query.id, req.params.username, req.body)) {
+        return res.status(202).json({
+          log: 'updated project',
+          success: true
+        });
+      } else {
+        return res.status(406).json({
+          log: 'project update failed, retry request',
+          success: false
+        });
+      }
     } else {
-      return res.status(406).json({
-        log: 'project update failed, retry request',
+      return res.status(503).json({
+        log: 'invalid api token',
         success: false
       });
     }
