@@ -1,4 +1,5 @@
 const createUser = require('../models/user/createUser.model');
+const loginUser = require('../models/user/loginUser.model');
 
 module.exports = {
   /**
@@ -9,5 +10,12 @@ module.exports = {
    *  password
    * }
    */
-  create: data => createUser(data)
+  create: data => createUser(data),
+  /**
+   * @param {
+   *  username,
+   *  password
+   * }
+   */
+  login: data => loginUser(data)
 };
