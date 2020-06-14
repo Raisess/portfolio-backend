@@ -10,7 +10,7 @@ module.exports.get = (id, username, callback) => {
 
       return callback(project);
     })
-    .catch(() => false);
+    .catch(() => callback(false));
 }
 
 // get all
@@ -22,5 +22,5 @@ module.exports.getAll = (username, callback) => {
 
       return callback(projects);
     })
-    .catch(() => false);
+    .catch(() => callback(false));
 }
