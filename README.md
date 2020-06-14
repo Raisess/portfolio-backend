@@ -1,5 +1,43 @@
 # DOCUMENTAÇÃO DA API
 
+## ROTAS DE USUÁRIOS
+
+### Criar novo usuário :: POST
+
+Endpoint:
+```
+POST :: /user/create
+```
+
+Body:
+```json
+{
+  "username": "<username>",
+  "email": "<email>",
+  "avatar": "<avatar>",
+  "password": "<password>"
+}
+```
+
+Retorno booleano.
+
+### Logar usuário :: POST
+
+Endpoint:
+```
+POST :: /user/login
+```
+
+Body:
+```json
+{
+  "username": "<username>",
+  "password": "<password>"
+}
+```
+
+Retorna o token da API do respectivo usuário.
+
 ## ROTAS DE PROJETOS
 
 ### Criar novo projeto :: POST
@@ -24,6 +62,8 @@ Body:
 }
 ```
 
+Retorno booleano.
+
 ### Atualizar um projeto :: PUT
 
 #### token obrigatorio
@@ -45,9 +85,13 @@ Body:
 }
 ```
 
+Retorno booleano.
+
 ### Buscar um projeto :: GET
 
 Endpoint:
 ```
 GET :: /project/get/:username/:id
 ```
+
+Retorna o projeto.
