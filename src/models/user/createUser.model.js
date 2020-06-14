@@ -11,15 +11,28 @@ const passAlt = require('../../passAlt.json');
 module.exports = ({ email, avatar, username, password }) => {
   const id = hash();
 
-  return db.ref(`/users/${id}`)
-    .set(userSchema(
-      id,
-      md5(email + username + passAlt[0]),
-      email,
-      avatar,
-      username,
-      md5(password + passAlt[0])
-    ))
-    .then(() => true)
-    .catch(() => false);
+  return db.ref('/users')
+    .once('value')
+    .then(data => {
+      const users = Object.values(data.val());
+
+      for (let user of users) {
+        if (user.username === username) {
+          return false;
+        }
+      }
+
+      return db.ref(`/users/${id}`)
+        .set(userSchema(
+          id,
+          md5(email + username + passAlt[0]),
+          email,
+          avatar,
+          username,
+          md5(password + passAlt[0])
+        ))
+        .then(() => true)
+        .catch(() => false);
+    })
+    .catch(() => false)
 }
