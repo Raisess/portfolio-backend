@@ -5,14 +5,14 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "test": "jest ./tests/index.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Raisess/portfolio-backend.git"
   },
   "author": "Raisess",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Raisess/portfolio-backend/issues"
   },
