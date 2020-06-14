@@ -1,4 +1,4 @@
-const checkApiToken = require('../models/goblal/checkApiToken.model');
+const checkApiToken = require('../models/global/checkApiToken.model');
 
 module.exports = {
   /**
