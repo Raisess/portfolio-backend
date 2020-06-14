@@ -18,7 +18,7 @@ const { create, update, get, getAll } = require('../controllers/project.controll
  */
 router.post('/create?', async (req, res) => {
   try {
-    console.log(await checkApiToken(req.query.token));
+    // console.log(await checkApiToken(req.query.token));
     if (await checkApiToken(req.query.token)) {
       if (await create(req.body)) {
         return res.status(201).json({
