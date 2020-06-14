@@ -49,5 +49,5 @@ Body:
 
 Endpoint:
 ```
-GET :: /project/get/:username?id=<project-id>
+GET :: /project/get/:username/:id
 ```
