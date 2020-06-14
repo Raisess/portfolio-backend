@@ -16,7 +16,7 @@ module.exports = ({ email, avatar, username, password }) => {
       email,
       avatar,
       username,
-      md5(password) + passAlt[0]
+      md5(password + passAlt[0])
     ))
     .then(() => true)
     .catch(() => false);
