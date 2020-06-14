@@ -5,7 +5,7 @@ module.exports = token => {
   return db.ref('/users')
     .once('value')
     .then(data => {
-      const users = data.val();
+      const users = Object.values(data.val());
 
       for (let user of users) {
         if (user.token === token) {

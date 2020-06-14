@@ -9,7 +9,7 @@ module.exports = ({ username, password }, callback) => {
   db.ref('/users')
     .once('value')
     .then(data => {
-      const users = data.val();
+      const users = Object.values(data.val());
 
       for (let user of users) {
         if (user.username === username &&
