@@ -4,11 +4,11 @@
 
 ### Criar novo projeto :: POST
 
-#### AUTH obrigatorio
+#### token obrigatorio
 
 Endpoint:
 ```
-POST :: /project/create?jwt=<token>
+POST :: /project/create?token=<api-token>
 ```
 
 Body:
@@ -26,11 +26,11 @@ Body:
 
 ### Atualizar um projeto :: PUT
 
-#### AUTH obrigatorio
+#### token obrigatorio
 
 Endpoint:
 ```
-PUT :: /project/update/:username?id=<project-id>&jwt=<token>
+PUT :: /project/update/:username?id=<project-id>&token=<api-token>
 ```
 
 Body:
