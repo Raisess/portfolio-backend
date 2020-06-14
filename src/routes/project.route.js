@@ -16,11 +16,11 @@ const { create, update, get, getAll } = require('../controllers/project.controll
  *  color
  * }
  */
-router.post('/create?', (req, res) => {
+router.post('/create?', async (req, res) => {
   try {
-    console.log(checkApiToken(req.query.token));
-    if (checkApiToken(req.query.token)) {
-      if (create(req.body)) {
+    console.log(await checkApiToken(req.query.token));
+    if (await checkApiToken(req.query.token)) {
+      if (await create(req.body)) {
         return res.status(201).json({
           log: 'created project',
           success: true
@@ -57,10 +57,10 @@ router.post('/create?', (req, res) => {
  *  color
  * }
  */
-router.put('/update/:username?', (req, res) => {
+router.put('/update/:username?', async (req, res) => {
   try {
-    if (checkApiToken(req.query.token)) {
-      if (update(req.query.id, req.params.username, req.body)) {
+    if (await checkApiToken(req.query.token)) {
+      if (await update(req.query.id, req.params.username, req.body)) {
         return res.status(202).json({
           log: 'updated project',
           success: true
