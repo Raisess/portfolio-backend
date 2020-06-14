@@ -14,7 +14,7 @@ const { create, update, get, getAll } = require('../controllers/project.controll
  *  color
  * }
  */
-router.post('/create', (req, res) => {
+router.post('/create?', (req, res) => {
   try {
     if (create(req.body)) {
       return res.status(201).json({
