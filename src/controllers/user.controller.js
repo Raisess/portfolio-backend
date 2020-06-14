@@ -17,5 +17,5 @@ module.exports = {
    *  password
    * }
    */
-  login: data => loginUser(data)
+  login: (data, callback) => loginUser(data, callback)
 };

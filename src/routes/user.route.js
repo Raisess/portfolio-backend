@@ -33,4 +33,36 @@ router.post('/create', async (req, res) => {
   }
 });
 
+// login user route
+/**
+ * @param {
+ *  username,
+ *  password
+ * }
+ */
+router.post('/login', (req, res) => {
+  try {
+    login(req.body, token => {
+      if (token) {
+        return res.status(200).json({
+          log: 'user logged',
+          success: true,
+          token: token
+        });
+      } else {
+        return res.status(503).json({
+          log: 'user login failed, retry request',
+          success: false
+        });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      log: 'error in user login'
+    });
+  }
+});
+
 module.exports = router;

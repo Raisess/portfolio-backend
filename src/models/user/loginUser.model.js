@@ -17,6 +17,8 @@ module.exports = ({ username, password }, callback) => {
           return callback(user.token);
         }
       }
+
+      return callback(false);
     })
     .catch(() => callback(false));
 }
