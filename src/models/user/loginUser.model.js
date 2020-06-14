@@ -14,12 +14,7 @@ module.exports = ({ username, password }, callback) => {
       for (let user of users) {
         if (user.username === username &&
           user.password === md5(password + passAlt[0])) {
-          return callback({
-            username: user.username,
-            avatar: user.avatar,
-            email: user.email,
-            token: user.token
-          });
+          return callback(user.token);
         }
       }
     })
