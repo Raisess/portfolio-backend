@@ -2,7 +2,7 @@ const fb = require('firebase');
 const config = require('../src/firebase/firebase.json');
 fb.initializeApp(config);
 
-const { create, update, get } = require('../src/controllers/project.controller');
+const { create, update, get, delete_ } = require('../src/controllers/project.controller');
 
 it('create a project :: {} === true', () => {
   return create({
@@ -18,7 +18,7 @@ it('create a project :: {} === true', () => {
 });
 
 it('update a project :: {} === true', () => {
-  return update('HGWiuhOKQLTJiaX0', 'teste', {
+  return update('<project-id>', '<username>', {
     name: "teste2",
     description: "teste",
     cover: "teste",
@@ -30,8 +30,16 @@ it('update a project :: {} === true', () => {
 });
 
 test('get one project :: data{}', () => {
-  const [username, id] = ['teste', 'DS8n3awufoNR4aSD'];
+  const [username, id] = ['<username>', '<id>'];
 
   return get(id, username, data => expect(data.name)
     .toBe('teste2'));
+});
+
+it('delete a project :: true', () => {
+  const [username, id] = ['<username>', '<id>'];
+
+  return delete_(id, username)
+    .then(bool => expect(bool)
+      .toBe(true));
 });
