@@ -120,4 +120,35 @@ router.get('/get/:username/:id', (req, res) => {
   }
 });
 
+// get all projects
+/**
+ * @param {
+ *  username
+ * }
+ */
+router.get('/getAll/:username', (req, res) => {
+  try {
+    getAll(req.params.username, projects => {
+      if (!project) {
+        return res.status(200).json({
+          log: 'get all projects success',
+          success: true,
+          projects: projects
+        });
+      }
+
+      return res.status().json({
+        log: 'get all projects fail',
+        success: false
+      });
+    });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      log: 'error on get all projects'
+    });
+  }
+});
+
 module.exports = router;

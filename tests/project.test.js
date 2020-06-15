@@ -2,7 +2,7 @@ const fb = require('firebase');
 const config = require('../src/firebase/firebase.json');
 fb.initializeApp(config);
 
-const { create, update } = require('../src/controllers/project.controller');
+const { create, update, get } = require('../src/controllers/project.controller');
 
 it('create a project :: {} === true', () => {
   return create({
@@ -27,4 +27,11 @@ it('update a project :: {} === true', () => {
     color: "teste"
   })
     .then(bool => expect(bool).toBe(true));
+});
+
+test('get one project :: data{}', () => {
+  const [username, id] = ['teste', 'DS8n3awufoNR4aSD'];
+
+  return get(id, username, data => expect(data.name)
+    .toBe('teste2'));
 });
