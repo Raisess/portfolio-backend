@@ -2,7 +2,7 @@ const router = require('express').Router();
 // global controller
 const { checkApiToken } = require('../controllers/global.controller');
 // project controller
-const { create, update, get, getAll } = require('../controllers/project.controller');
+const { create, update, get, getAll, delete_ } = require('../controllers/project.controller');
 
 // create project route
 /**
@@ -112,7 +112,7 @@ router.get('/get/:username/:id', (req, res) => {
         });
       }
 
-      return res.status().json({
+      return res.status(404).json({
         log: 'project get fail',
         success: false
       });
@@ -143,7 +143,7 @@ router.get('/getAll/:username', (req, res) => {
         });
       }
 
-      return res.status().json({
+      return res.status(404).json({
         log: 'get all projects fail',
         success: false
       });
@@ -153,6 +153,43 @@ router.get('/getAll/:username', (req, res) => {
 
     return res.status(500).json({
       log: 'error on get all projects'
+    });
+  }
+});
+
+// delete a project
+/**
+ * ! needs username
+ * ! needs API token
+ * ! needs project id
+ */
+router.delete('/delete/:username?', (req, res) => {
+  try {
+    const access = await checkApiToken(req.query.token);
+
+    if (access) {
+      if (delete_(req.query.token, req.query.token, req.params.username)) {
+        return res.status(200).json({
+          log: 'project delete success',
+          success: true
+        });
+      } else {
+        return res.status(406).json({
+          log: 'project delete false',
+          success: false
+        });
+      }
+    } else {
+      return res.status(503).json({
+        log: 'invalid api token',
+        success: false
+      });
+    }
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      log: 'error on delete a project'
     });
   }
 });
