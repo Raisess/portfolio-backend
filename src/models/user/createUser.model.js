@@ -8,7 +8,7 @@ const userSchema = require('../../schemas/user.schema');
 // pass alt
 const passAlt = require('../../passAlt.json');
 
-module.exports = ({ email, avatar, username, name, password }) => {
+module.exports = ({ email, avatar, username, name, github, password }) => {
   const id = hash();
 
   return db.ref('/users')
@@ -30,6 +30,7 @@ module.exports = ({ email, avatar, username, name, password }) => {
           avatar,
           username,
           name,
+          github,
           md5(password + passAlt[0])
         ))
         .then(() => true)

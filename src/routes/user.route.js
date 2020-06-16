@@ -7,6 +7,7 @@ const { create, login } = require('../controllers/user.controller');
  * @param {
  *  username,
  *  name,
+ *  github,
  *  email,
  *  password,
  *  avatar
