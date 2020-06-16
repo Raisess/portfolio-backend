@@ -1,4 +1,4 @@
-module.exports = (hash, token, email, avatar, username, password) => {
+module.exports = (hash, token, email, avatar, username, name, password) => {
   return {
     crated_at: new Date().toDateString(),
     update_at: new Date().toDateString(),
@@ -7,6 +7,7 @@ module.exports = (hash, token, email, avatar, username, password) => {
     email: email,
     avatar: avatar,
     username: username,
+    name: name,
     password: password
   };
 }
