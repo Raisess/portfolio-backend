@@ -163,12 +163,12 @@ router.get('/getAll/:username', (req, res) => {
  * ! needs API token
  * ! needs project id
  */
-router.delete('/delete/:username?', (req, res) => {
+router.delete('/delete/:username?', async (req, res) => {
   try {
     const access = await checkApiToken(req.query.token);
 
     if (access) {
-      if (delete_(req.query.token, req.query.token, req.params.username)) {
+      if (await delete_(req.query.token, req.query.token, req.params.username)) {
         return res.status(200).json({
           log: 'project delete success',
           success: true
