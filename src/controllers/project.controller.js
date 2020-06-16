@@ -15,7 +15,7 @@ module.exports = {
    *  color
    * }
    */
-  create: data => createProject(data),
+  create: (token, data) => createProject(token, data),
   /**
    * @param {
    *  name,
@@ -26,7 +26,7 @@ module.exports = {
    *  color
    * }
    */
-  update: (id, username, data) => updateProject(id, username, data),
+  update: (token, id, data) => updateProject(token, id, data),
   /**
    * @param {
    *  id,

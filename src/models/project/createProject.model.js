@@ -4,11 +4,12 @@ const hash = require('../../modules/hash');
 // schema
 const projectSchema = require('../../schemas/project.schema');
 
-module.exports = ({ username, name, description, cover, link, git, color }) => {
+module.exports = (token, { username, name, description, cover, link, git, color }) => {
   const id = hash();
 
   return db.ref(`/projects/${username}/${id}`)
     .set(projectSchema(
+      token,
       id,
       username,
       name,

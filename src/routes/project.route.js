@@ -6,6 +6,7 @@ const { create, update, get, getAll } = require('../controllers/project.controll
 
 // create project route
 /**
+ * ! need API token
  * @param {
  *  username,
  *  name,
@@ -19,8 +20,10 @@ const { create, update, get, getAll } = require('../controllers/project.controll
 router.post('/create?', async (req, res) => {
   try {
     // console.log(await checkApiToken(req.query.token));
-    if (await checkApiToken(req.query.token)) {
-      if (await create(req.body)) {
+    const access = await checkApiToken(req.query.token);
+
+    if (access) {
+      if (await create(req.query.token, req.body)) {
         return res.status(201).json({
           log: 'created project',
           success: true
@@ -48,6 +51,7 @@ router.post('/create?', async (req, res) => {
 
 // update project route
 /**
+ * ! need API token
  * ! need the project id
  * ! need the username
  * @param {
@@ -59,10 +63,12 @@ router.post('/create?', async (req, res) => {
  *  color
  * }
  */
-router.put('/update/:username?', async (req, res) => {
+router.put('/update?', async (req, res) => {
   try {
-    if (await checkApiToken(req.query.token)) {
-      if (await update(req.query.id, req.params.username, req.body)) {
+    const access = await checkApiToken(req.query.token);
+
+    if (access) {
+      if (await update(req.query.token, req.query.id, req.body)) {
         return res.status(202).json({
           log: 'updated project',
           success: true
