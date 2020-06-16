@@ -63,12 +63,12 @@ router.post('/create?', async (req, res) => {
  *  color
  * }
  */
-router.put('/update?', async (req, res) => {
+router.put('/update/:username?', async (req, res) => {
   try {
     const access = await checkApiToken(req.query.token);
 
     if (access) {
-      if (await update(req.query.token, req.query.id, req.body)) {
+      if (await update(req.query.token, req.query.id, req.params.username, req.body)) {
         return res.status(202).json({
           log: 'updated project',
           success: true

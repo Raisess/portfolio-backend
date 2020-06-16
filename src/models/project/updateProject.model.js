@@ -1,7 +1,7 @@
 const fb = require('firebase');
 const db = fb.database();
 
-module.exports = (token, id, { username, name, description, cover, link, git, color }) => {
+module.exports = (token, id, username, { name, description, cover, link, git, color }) => {
   return db.ref(`/projects/${username}/${id}`)
     .once('value')
     .then(data => {

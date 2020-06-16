@@ -18,7 +18,8 @@ it('create a project :: {} === true', () => {
 });
 
 it('update a project :: {} === true', () => {
-  return update('<project-id>', '<username>', {
+  return update('<project-token>', '<project-id>', {
+    username: "teste",
     name: "teste2",
     description: "teste",
     cover: "teste",

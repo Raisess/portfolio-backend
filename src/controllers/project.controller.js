@@ -26,7 +26,7 @@ module.exports = {
    *  color
    * }
    */
-  update: (token, id, data) => updateProject(token, id, data),
+  update: (token, id, username, data) => updateProject(token, id, username, data),
   /**
    * @param {
    *  id,
