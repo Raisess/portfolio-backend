@@ -7,6 +7,7 @@ const { create, login } = require('../src/controllers/user.controller');
 it('create a user :: {} === true', () => {
   return create({
     username: 'teste',
+    name: 'teste teste123',
     password: 'teste',
     email: 'teste',
     avatar: 'teste'
