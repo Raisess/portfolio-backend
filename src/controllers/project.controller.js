@@ -46,5 +46,5 @@ module.exports = {
    *  username
    * }
    */
-  delete_: (id, username) => deleteProject(id, username)
+  delete_: (token, id, username) => deleteProject(id, username)
 };
