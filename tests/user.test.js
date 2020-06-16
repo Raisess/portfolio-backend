@@ -8,6 +8,7 @@ it('create a user :: {} === true', () => {
   return create({
     username: 'teste',
     name: 'teste teste123',
+    github: 'Raisess',
     password: 'teste',
     email: 'teste',
     avatar: 'teste'
