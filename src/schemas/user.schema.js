@@ -8,7 +8,7 @@ module.exports = (hash, token, email, avatar, username, name, github, password) 
     avatar: avatar,
     username: username,
     name: name,
-    github,
+    github: github,
     password: password
   };
 }

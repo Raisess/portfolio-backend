@@ -30,7 +30,7 @@ module.exports = ({ email, avatar, username, name, github, password }) => {
           avatar,
           username,
           name,
-          github,
+          `https://github.com/${github}`,
           md5(password + passAlt[0])
         ))
         .then(() => true)
