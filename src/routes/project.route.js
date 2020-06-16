@@ -175,7 +175,7 @@ router.delete('/delete/:username?', async (req, res) => {
         });
       } else {
         return res.status(406).json({
-          log: 'project delete false',
+          log: 'project delete fail',
           success: false
         });
       }
