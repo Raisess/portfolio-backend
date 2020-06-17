@@ -1,8 +1,8 @@
-# DOCUMENTAÇÃO DA API
+# 📚 DOCUMENTAÇÃO DA API
 
-## ROTAS DE USUÁRIOS
+## 😎 ROTAS DE USUÁRIOS
 
-### Criar novo usuário :: POST
+### 🥰 Criar novo usuário :: POST
 
 Endpoint:
 ```
@@ -21,7 +21,7 @@ Body:
 
 Retorno booleano.
 
-### Logar usuário :: POST
+### 🔐 Logar usuário :: POST
 
 Endpoint:
 ```
@@ -36,11 +36,11 @@ Body:
 }
 ```
 
-Retorna o token da API do respectivo usuário.
+Retorna um objeto com token da API do respectivo usuário.
 
-## ROTAS DE PROJETOS
+## ⚒ ROTAS DE PROJETOS
 
-### Criar novo projeto :: POST
+### 🔨 Criar novo projeto :: POST
 
 #### token obrigatorio
 
@@ -64,7 +64,7 @@ Body:
 
 Retorno booleano.
 
-### Atualizar um projeto :: PUT
+### 🔧 Atualizar um projeto :: PUT
 
 #### token obrigatorio
 
@@ -87,7 +87,7 @@ Body:
 
 Retorno booleano.
 
-### Buscar um projeto :: GET
+### 🔎 Buscar um projeto :: GET
 
 Endpoint:
 ```
@@ -95,3 +95,21 @@ GET :: /project/get/:username/:id
 ```
 
 Retorna o projeto.
+
+### 🔍 Buscar todos os projetos de um usuário :: GET
+
+Endpoint:
+```
+GET :: /project/getAll/:username
+```
+
+Retorna um **array** com os projetos.
+
+### 🗑 Deletar um projeto :: DELETE
+
+Endpoint:
+```
+DELETE :: /project/delete/:username?id=<project-id>&token=<api-token>
+```
+
+Retorna um response de objeto com uma chave **booleana** com a confirmação.
