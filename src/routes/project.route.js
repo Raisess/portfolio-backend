@@ -168,7 +168,7 @@ router.delete('/delete/:username?', async (req, res) => {
     const access = await checkApiToken(req.query.token);
 
     if (access) {
-      if (await delete_(req.query.token, req.query.token, req.params.username)) {
+      if (await delete_(req.query.token, req.query.id, req.params.username)) {
         return res.status(200).json({
           log: 'project delete success',
           success: true
