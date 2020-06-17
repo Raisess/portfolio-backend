@@ -2,7 +2,7 @@ const fb = require('firebase');
 const config = require('../src/firebase/firebase.json');
 fb.initializeApp(config);
 
-const { create, login } = require('../src/controllers/user.controller');
+const { create, login, get } = require('../src/controllers/user.controller');
 
 it('create a user :: {} === true', () => {
   return create({
@@ -22,4 +22,9 @@ test('login a user :: {} === data{}', () => {
     password: 'teste'
   }, data => expect(data.username)
     .toBe('teste'));
+});
+
+test('get  user :: {} === data{}', () => {
+  return get('teste', data => expect(typeof data)
+    .toBe('object'));
 });

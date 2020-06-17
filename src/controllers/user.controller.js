@@ -1,5 +1,6 @@
 const createUser = require('../models/user/createUser.model');
 const loginUser = require('../models/user/loginUser.model');
+const getUser = require('../models/user/getUser.model');
 
 module.exports = {
   /**
@@ -17,5 +18,11 @@ module.exports = {
    *  password
    * }
    */
-  login: (data, callback) => loginUser(data, callback)
+  login: (data, callback) => loginUser(data, callback),
+  /**
+   * @param {
+   *  username
+   * }
+   */
+  get: (username, callback) => getUser(username, callback)
 };
