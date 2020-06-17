@@ -104,7 +104,7 @@ router.put('/update/:username?', async (req, res) => {
 router.get('/get/:username/:id', (req, res) => {
   try {
     get(req.params.id, req.params.username, project => {
-      if (!project) {
+      if (project) {
         return res.status(200).json({
           log: 'project get success',
           success: true,
@@ -135,7 +135,7 @@ router.get('/get/:username/:id', (req, res) => {
 router.get('/getAll/:username', (req, res) => {
   try {
     getAll(req.params.username, projects => {
-      if (!project) {
+      if (projects) {
         return res.status(200).json({
           log: 'get all projects success',
           success: true,
