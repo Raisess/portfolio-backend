@@ -27,7 +27,7 @@ router.post('/create', async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error.message);
 
     return res.status(500).json({
       log: 'error in user creation'
@@ -59,7 +59,7 @@ router.post('/login', (req, res) => {
       }
     });
   } catch (error) {
-    console.log(error);
+    console.error(error.message);
 
     return res.status(500).json({
       log: 'error in user login'
