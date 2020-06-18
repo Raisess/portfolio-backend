@@ -11,7 +11,7 @@ const { create, update, get, getAll, delete_ } = require('../controllers/project
  *  username,
  *  name,
  *  description,
- *  cover,
+ *  cover:Base64,
  *  link,
  *  git,
  *  color
