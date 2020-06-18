@@ -1,3 +1,7 @@
 /node_modules
+# ocult firebase credencials file
 /src/firebase/firebase.json
+# ocult password alt hash file
 /src/passAlt.json
+# ocult imgur api credencials file
+/src/services/imgur_api/credencials.json
