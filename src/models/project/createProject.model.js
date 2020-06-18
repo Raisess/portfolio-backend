@@ -4,8 +4,15 @@ const hash = require('../../modules/hash');
 // schema
 const projectSchema = require('../../schemas/project.schema');
 
+// imgur upload service
+const uploadImg = require('../../services/imgur_api');
+
 module.exports = (token, { username, name, description, cover, link, git, color }) => {
   const id = hash();
+
+  const coverLink = uploadImg(cover)
+    .then(res => res[1])
+    .catch(() => 'https://www.faiauto.com/content/uploads/2016/02/placeholder-banner.png');
 
   return db.ref(`/projects/${username}/${id}`)
     .set(projectSchema(
@@ -14,7 +21,7 @@ module.exports = (token, { username, name, description, cover, link, git, color 
       username,
       name,
       description,
-      cover,
+      coverLink,
       link,
       git,
       color

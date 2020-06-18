@@ -1,7 +1,14 @@
 const fb = require('firebase');
 const db = fb.database();
 
+// imgur upload service
+const uploadImg = require('../../services/imgur_api');
+
 module.exports = (token, id, username, { name, description, cover, link, git, color }) => {
+  const coverLink = uploadImg(cover)
+    .then(res => res[1])
+    .catch(() => 'https://www.faiauto.com/content/uploads/2016/02/placeholder-banner.png');
+
   return db.ref(`/projects/${username}/${id}`)
     .once('value')
     .then(data => {
@@ -11,7 +18,7 @@ module.exports = (token, id, username, { name, description, cover, link, git, co
             updated_at: new Date().toDateString(),
             name: name,
             description: description,
-            cover: cover,
+            cover: coverLink,
             link: link,
             git: git,
             color: color
