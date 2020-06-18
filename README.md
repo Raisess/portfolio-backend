@@ -57,7 +57,7 @@ Body:
   "username": "<username>",
   "name": "<project-name>",
   "description": "<project-description>",
-  "cover": "<project-cover>",
+  "cover": "<project-cover:Base64-image>",
   "link": "<project-link>",
   "git": "<project-git>",
   "color": "<project-highlight-color>"
@@ -78,7 +78,6 @@ PUT :: /project/update/:username?id=<project-id>&token=<api-token>
 Body:
 ```json
 {
-  "username": "<createdby-username>",
   "name": "<project-name>",
   "description": "<project-description>",
   "cover": "<project-cover:Base64-image>",
