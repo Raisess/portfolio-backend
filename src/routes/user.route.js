@@ -10,7 +10,7 @@ const { create, login } = require('../controllers/user.controller');
  *  github,
  *  email,
  *  password,
- *  avatar
+ *  avatar:Base64
  * }
  */
 router.post('/create', async (req, res) => {
