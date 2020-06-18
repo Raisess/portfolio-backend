@@ -57,7 +57,7 @@ router.post('/create?', async (req, res) => {
  * @param {
  *  name,
  *  description,
- *  cover,
+ *  cover:Base64,
  *  link,
  *  git,
  *  color
