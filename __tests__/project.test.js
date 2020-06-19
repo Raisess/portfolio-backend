@@ -34,7 +34,7 @@ test('get one project :: data{}', () => {
   const [username, id] = ['<username>', '<id>'];
 
   return get(id, username, data => expect(data.name)
-    .toBe('teste2'));
+    .toBe('<project-name>'));
 });
 
 it('delete a project :: true', () => {

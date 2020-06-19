@@ -6,7 +6,8 @@ module.exports.get = (id, username, callback) => {
   db.ref(`/projects/${username}/${id}`)
     .once('value')
     .then(data => {
-      const project = data.val() || false;
+      let project = data.val() || false;
+      project.token = false;
 
       return callback(project);
     })
@@ -18,7 +19,11 @@ module.exports.getAll = (username, callback) => {
   db.ref(`/projects/${username}`)
     .once('value')
     .then(data => {
-      const projects = Object.values(data.val()) || false;
+      let projects = Object.values(data.val()) || false;
+
+      for (let project of projects) {
+        project.token = false;
+      }
 
       return callback(projects);
     })
