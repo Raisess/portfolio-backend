@@ -28,18 +28,18 @@ router.post('/create?', async (req, res) => {
           log: 'created project',
           success: true
         });
-      } else {
-        return res.status(503).json({
-          log: 'project creation failed, retry request',
-          success: false
-        });
       }
-    } else {
+
       return res.status(503).json({
-        log: 'invalid api token',
+        log: 'project creation failed, retry request',
         success: false
       });
     }
+
+    return res.status(503).json({
+      log: 'invalid api token',
+      success: false
+    });
   } catch (error) {
     console.error(error.message);
 
@@ -73,18 +73,18 @@ router.put('/update/:username?', async (req, res) => {
           log: 'updated project',
           success: true
         });
-      } else {
-        return res.status(406).json({
-          log: 'project update failed, retry request',
-          success: false
-        });
       }
-    } else {
-      return res.status(503).json({
-        log: 'invalid api token',
+
+      return res.status(406).json({
+        log: 'project update failed, retry request',
         success: false
       });
     }
+
+    return res.status(503).json({
+      log: 'invalid api token',
+      success: false
+    });
   } catch (error) {
     console.error(error.message);
 
@@ -173,18 +173,18 @@ router.delete('/delete/:username?', async (req, res) => {
           log: 'project delete success',
           success: true
         });
-      } else {
-        return res.status(406).json({
-          log: 'project delete fail',
-          success: false
-        });
       }
-    } else {
-      return res.status(503).json({
-        log: 'invalid api token',
+
+      return res.status(406).json({
+        log: 'project delete fail',
         success: false
       });
     }
+
+    return res.status(503).json({
+      log: 'invalid api token',
+      success: false
+    });
   } catch (error) {
     console.error(error.message);
 
