@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // user controller
-const { create, login } = require('../controllers/user.controller');
+const { create, login, get } = require('../controllers/user.controller');
 
 // create user route
 /**
@@ -20,12 +20,12 @@ router.post('/create', async (req, res) => {
         log: 'created user',
         success: true
       });
-    } else {
-      return res.status(503).json({
-        log: 'user creation failed, retry request',
-        success: false
-      });
     }
+
+    return res.status(503).json({
+      log: 'user creation failed, retry request',
+      success: false
+    });
   } catch (error) {
     console.error(error.message);
 
@@ -51,18 +51,49 @@ router.post('/login', (req, res) => {
           success: true,
           token: token
         });
-      } else {
-        return res.status(503).json({
-          log: 'user login failed, retry request',
-          success: false
-        });
       }
+
+      return res.status(503).json({
+        log: 'user login failed, retry request',
+        success: false
+      });
     });
   } catch (error) {
     console.error(error.message);
 
     return res.status(500).json({
       log: 'error in user login'
+    });
+  }
+});
+
+// get user info
+/**
+ * @param {
+ *  username
+ * }
+ */
+router.get('/get/:username', (req, res) => {
+  try {
+    get(req.params.username, user => {
+      if (user) {
+        return res.status(200).json({
+          log: 'user get success',
+          success: true,
+          user: user
+        });
+      }
+
+      return res.status(404).json({
+        log: 'user get fail',
+        success: false
+      });
+    });
+  } catch (error) {
+    console.error(error.message);
+
+    return res.status(500).json({
+      log: 'error in user get route'
     });
   }
 });
