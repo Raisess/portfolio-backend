@@ -12,25 +12,21 @@ module.exports = img => {
     return imgur.uploadBase64(img)
       .then(res => {
         // console.log(res.data.link);
-
-        return [true, res.data.link];
+        return res.data.link;
       })
       .catch(err => {
         // console.error(err.message);
-
-        return [false];
+        return false;
       });
   }
 
   return imgur.uploadUrl(img)
     .then(res => {
       // console.log(res.data.link);
-
-      return [true, res.data.link];
+      return res.data.link;
     })
     .catch(err => {
       // console.error(err.message);
-
-      return [false];
+      return false;
     });
 }
