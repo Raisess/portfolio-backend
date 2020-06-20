@@ -11,10 +11,10 @@ const passAlt = require('../../passAlt.json');
 // imgur upload service
 const uploadImg = require('../../services/imgur_api');
 
-module.exports = ({ email, avatar, username, name, github, password }) => {
+module.exports = async ({ email, avatar, username, name, github, password }) => {
   const id = hash();
 
-  const avatarLink = uploadImg(avatar);
+  const avatarLink = await uploadImg(avatar);
 
   return db.ref('/users')
     .once('value')
