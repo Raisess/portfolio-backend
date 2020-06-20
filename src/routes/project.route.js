@@ -11,7 +11,7 @@ const { create, update, get, getAll, delete_ } = require('../controllers/project
  *  username,
  *  name,
  *  description,
- *  cover:Base64,
+ *  cover:Base64 || link,
  *  link,
  *  git,
  *  color
@@ -57,7 +57,7 @@ router.post('/create?', async (req, res) => {
  * @param {
  *  name,
  *  description,
- *  cover:Base64,
+ *  cover:Base64 || link,
  *  link,
  *  git,
  *  color
