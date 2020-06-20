@@ -15,7 +15,7 @@ Body:
   "username": "<username>",
   "name": "<realname>",
   "email": "<email>",
-  "avatar": "<avatar:Base64-image>",
+  "avatar": "<avatar:Base64-image || url>",
   "password": "<password>",
   "github": "<github-username>"
 }
@@ -40,6 +40,35 @@ Body:
 
 Retorna um objeto com token da API do respectivo usuário.
 
+### 🤠 Atualizar um usuário :: PUT
+
+#### token obrigatorio
+
+Endpoint:
+```
+PUT :: /user/update?token=<api-token>
+```
+
+Body:
+```json
+{
+  "name": "<full-name>",
+  "cover": "<avatar:Base64-image || url>",
+  "github": "<github-username>"
+}
+```
+
+Retorno booleano.
+
+### 🧐 Buscar um usuário :: GET
+
+Endpoint:
+```
+GET :: /user/get/:username
+```
+
+Retorna um objeto.
+
 ## ⚒ ROTAS DE PROJETOS
 
 ### 🔨 Criar novo projeto :: POST
@@ -57,7 +86,7 @@ Body:
   "username": "<username>",
   "name": "<project-name>",
   "description": "<project-description>",
-  "cover": "<project-cover:Base64-image>",
+  "cover": "<project-cover:Base64-image || url>",
   "link": "<project-link>",
   "git": "<project-git>",
   "color": "<project-highlight-color>"
@@ -80,7 +109,7 @@ Body:
 {
   "name": "<project-name>",
   "description": "<project-description>",
-  "cover": "<project-cover:Base64-image>",
+  "cover": "<project-cover:Base64-image || url>",
   "link": "<project-link>",
   "git": "<project-git>",
   "color": "<project-highlight-color>"
