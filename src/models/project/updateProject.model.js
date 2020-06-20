@@ -4,8 +4,8 @@ const db = fb.database();
 // imgur upload service
 const uploadImg = require('../../services/imgur_api');
 
-module.exports = (token, id, username, { name, description, cover, link, git, color }) => {
-  const coverLink = uploadImg(cover);
+module.exports = async (token, id, username, { name, description, cover, link, git, color }) => {
+  const coverLink = await uploadImg(cover);
 
   return db.ref(`/projects/${username}/${id}`)
     .once('value')

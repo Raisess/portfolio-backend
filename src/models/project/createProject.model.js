@@ -7,10 +7,10 @@ const projectSchema = require('../../schemas/project.schema');
 // imgur upload service
 const uploadImg = require('../../services/imgur_api');
 
-module.exports = (token, { username, name, description, cover, link, git, color }) => {
+module.exports = async (token, { username, name, description, cover, link, git, color }) => {
   const id = hash();
 
-  const coverLink = uploadImg(cover);
+  const coverLink = await uploadImg(cover);
 
   return db.ref(`/projects/${username}/${id}`)
     .set(projectSchema(

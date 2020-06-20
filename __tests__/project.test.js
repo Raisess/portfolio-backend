@@ -22,7 +22,7 @@ it('update a project :: {} === true', () => {
     username: "teste",
     name: "teste2",
     description: "teste",
-    cover: "teste",
+    cover: "https://img.ibxk.com.br/ns/rexposta/2019/07/09/09190831663418.jpg",
     link: "teste",
     git: "teste",
     color: "teste"
