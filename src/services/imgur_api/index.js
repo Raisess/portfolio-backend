@@ -11,12 +11,12 @@ module.exports = img => {
   if (isBase64(img)) {
     return imgur.uploadBase64(img)
       .then(res => {
-        console.log(res.data.link);
+        // console.log(res.data.link);
 
         return [true, res.data.link];
       })
       .catch(err => {
-        console.error(err.message);
+        // console.error(err.message);
 
         return [false];
       });
@@ -24,12 +24,12 @@ module.exports = img => {
 
   return imgur.uploadUrl(img)
     .then(res => {
-      console.log(res.data.link);
+      // console.log(res.data.link);
 
       return [true, res.data.link];
     })
     .catch(err => {
-      console.error(err.message);
+      // console.error(err.message);
 
       return [false];
     });
