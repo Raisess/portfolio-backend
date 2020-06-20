@@ -26,5 +26,6 @@ module.exports = (token, id, username, { name, description, cover, link, git, co
       }
 
       return false;
-    });
+    })
+    .catch(() => false);
 }
