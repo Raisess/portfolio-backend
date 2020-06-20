@@ -1,6 +1,8 @@
 const router = require('express').Router();
+// global controller
+const { checkApiToken } = require('../controllers/global.controller');
 // user controller
-const { create, login, get } = require('../controllers/user.controller');
+const { create, login, get, update } = require('../controllers/user.controller');
 
 // create user route
 /**
@@ -10,7 +12,7 @@ const { create, login, get } = require('../controllers/user.controller');
  *  github,
  *  email,
  *  password,
- *  avatar:Base64
+ *  avatar:Base64 || url
  * }
  */
 router.post('/create', async (req, res) => {
@@ -63,6 +65,46 @@ router.post('/login', (req, res) => {
 
     return res.status(500).json({
       log: 'error in user login'
+    });
+  }
+});
+
+// update user route
+/**
+ * ! needs API key
+ * @param {
+ *  name,
+ *  avatar,
+ *  github
+ * }
+ */
+router.put('/update?', async (req, res) => {
+  try {
+    const access = await checkApiToken(req.query.token);
+
+    if (access) {
+      if (await update(req.query.token, req.body)) {
+        return res.status(202).json({
+          log: 'user update success',
+          success: true
+        });
+      }
+
+      return res.status(406).json({
+        log: 'user update failed, retry request',
+        success: false
+      });
+    }
+
+    return res.status(503).json({
+      log: 'invalid api token',
+      success: false
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status().json({
+      log: 'error in user update'
     });
   }
 });
