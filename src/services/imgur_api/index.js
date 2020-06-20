@@ -8,7 +8,7 @@ const { client_id, email, password } = require('./credencials.json');
 module.exports = img => {
   imgur.setCredentials(email, password, client_id);
 
-  if (isBase64(img)) {
+  if (isBase64(img, { allowMime: true })) {
     return imgur.uploadBase64(img)
       .then(res => {
         // console.log(res.data.link);

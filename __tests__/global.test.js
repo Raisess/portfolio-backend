@@ -14,9 +14,9 @@ test('check if api token is valid :: true', () => {
 });
 
 test('check image upload', () => {
-  const img = 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAmUlEQVQ4je2TsQ3CMBBFnxMa08WR2IQKJskIUNwMZAcYwWIQMs65JCUpEEIYW4pJy6v+6e6+/hVnnGsAzsCBMi7AsbbW/rIMsAU2xrnmkeruuzW7zgIw+JGbv6fGQpWzfy3HOsJlDQY/AlCv3jpF9oS5ZBOICKoB1YCIlCdQDR9127qyBHP5Gyw3CBXPr/qi709JHXE1S995AsqoJu8x78GsAAAAAElFTkSuQmCC';
+  const img = 'https://img.ibxk.com.br/ns/rexposta/2019/07/09/09190831663418.jpg';
 
   return uploadImg(img)
-    .then(res => expect(res[0])
-      .toBe(true));
+    .then(res => expect(typeof res)
+      .toBe('string'));
 });
