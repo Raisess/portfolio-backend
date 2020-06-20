@@ -4,10 +4,10 @@ const isBase64 = require('is-base64');
 // credencials data
 const { client_id, email, password } = require('./credencials.json');
 
-imgur.setCredentials(email, password, client_id);
-
 // upload image
 module.exports = img => {
+  imgur.setCredentials(email, password, client_id);
+
   if (isBase64(img)) {
     return imgur.uploadBase64(img)
       .then(res => {
