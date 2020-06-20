@@ -10,9 +10,7 @@ const uploadImg = require('../../services/imgur_api');
 module.exports = (token, { username, name, description, cover, link, git, color }) => {
   const id = hash();
 
-  const coverLink = uploadImg(cover)
-    .then(res => res[1])
-    .catch(() => 'https://www.faiauto.com/content/uploads/2016/02/placeholder-banner.png');
+  const coverLink = uploadImg(cover);
 
   return db.ref(`/projects/${username}/${id}`)
     .set(projectSchema(
@@ -21,7 +19,7 @@ module.exports = (token, { username, name, description, cover, link, git, color 
       username,
       name,
       description,
-      coverLink,
+      coverLink ? coverLink : 'https://www.faiauto.com/content/uploads/2016/02/placeholder-banner.png',
       link,
       git,
       color
