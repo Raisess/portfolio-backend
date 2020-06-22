@@ -55,7 +55,7 @@ router.post('/login', (req, res) => {
         });
       }
 
-      return res.status(503).json({
+      return res.status(404).json({
         log: 'user login failed, retry request',
         success: false
       });
